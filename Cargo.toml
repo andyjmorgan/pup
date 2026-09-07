@@ -172,5 +172,10 @@ jaq-json = { version = "2.0.1", features = ["serde"] }
 reqwest = { version = ">=0.13, <0.13.3", features = ["stream"] }
 gethostname = "1"
 
+# SIGPIPE disposition reset at startup. Already resolved in Cargo.lock as a
+# transitive dependency, so this adds no new crate to the graph.
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
 [dev-dependencies]
 mockito = "1"
